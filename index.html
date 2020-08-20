@@ -6,6 +6,9 @@
 </head>
 <body>
   <script>
+    let playerWins = true;
+    let computerWins = true;
+
     // Randomly picks "rock, paper, or scissors" for the computer
     function computerPlay() {
       let randomNum = Math.floor(Math.random() * 3);
@@ -23,57 +26,89 @@
 
     // Takes two parameters and declares winner
     function playRound(playerSelection, computerSelection) {
+        let result;
         switch (true) {
           case playerSelection == 'rock' && computerSelection == 'rock':
-          return "It's a tie!"
+          result = "It's a tie!"
+          playerWins = false;
+          computerWins = false; 
           break;
           case playerSelection == 'rock' && computerSelection == 'paper':
-          return "You lose! Paper beats Rock"
+          result = "You lose! Paper beats Rock"
+          playerWins = false;
+          computerWins = true; 
           break;
           case playerSelection == 'rock' && computerSelection == 'scissors':
-          return "You win! Rock beats Scissors"
+          result = "You win! Rock beats Scissors"
+          playerWins = true;
+          computerWins = false; 
           case playerSelection == 'paper' && computerSelection == 'paper':
-          return "It's a tie!"
+          result = "It's a tie!"
+          playerWins = false;
+          computerWins = false; 
           break;
           case playerSelection == 'paper' && computerSelection == 'rock':
-          return "You win! Paper beats Rock"
+          result = "You win! Paper beats Rock"
+          playerWins = true;
+          computerWins = false; 
           break;
           case playerSelection == 'paper' && computerSelection == 'scissors':
-          return "You lose! Scissors beats Paper"
+          result = "You lose! Scissors beats Paper"
+          playerWins = false;
+          computerWins = true; 
           case playerSelection == 'scissors' && computerSelection == 'scissors':
-          return "It's a tie!"
+          result = "It's a tie!"
+          playerWins = false;
+          computerWins = false; 
           break;
           case playerSelection == 'scissors' && computerSelection == 'rock':
-          return "You lose! Rock beats Scissors"
+          result = "You lose! Rock beats Scissors"
+          playerWins = false;
+          computerWins = true; 
           break;
           case playerSelection == 'scissors' && computerSelection == 'paper':
-          return "You win! Scissors beats Paper"
+          result = "You win! Scissors beats Paper"
+          playerWins = true;
+          computerWins = false; 
         }
+        return result;
     }
+    
+    //const playerSelection = 'rock'
+    //const computerSelection = computerPlay()
+    //console.log(playRound(playerSelection, computerSelection))
+    
 
     // Plays 5 round game that keeps score and reports a winner
     function game() {
       let playerScore = 0;
       let computerScore = 0;
+      playerWins;
+      computerWins;
       
       for(let i = 0; i < 5; i++) {
-      let result = playRound()
         switch (true) {
-          case result.includes("You win!"):
+          case playerWins:
           playerScore++
-          break;
-          case result.includes("You lose!"):
+          switch(true) {
+            case playerScore == 3 && computerScore < 3:
+            return 'You win!'
+            break;
+          }  
+          case computerWins:
           computerScore++;
+          switch(true) {
+            case computerScore == 3 && playerScore < 3:
+            return 'Computer wins'
+          }
         }
       }
 
-      switch(true) {
-        case playerScore == 3 && computerScore < 3:
-        return 'You win!'
-        break;
-        return 'Computer wins'
-      }
     }
+
+    const playerSelection = 'rock'
+    const computerSelection = computerPlay()
+    console.log(game())
   </script>
 </body>
 </html>
