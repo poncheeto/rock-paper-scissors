@@ -22,8 +22,6 @@
     }
 
     // Takes two parameters and declares winner
-    
-    
     function playRound(playerSelection, computerSelection) {
         switch (true) {
           case playerSelection == 'rock' && computerSelection == 'rock':
@@ -51,6 +49,23 @@
           case playerSelection == 'scissors' && computerSelection == 'paper':
           return "You win! Scissors beats Paper"
         }
+    }
+
+    // Plays 5 round game that keeps score and reports a winner
+    function game() {
+      let playerScore = 0;
+      let computerScore = 0;
+      
+      for(let i = 0; i < 5; i++) {
+      let result = playRound()
+        switch (true) {
+          case result.includes("You win!"):
+          playerScore++
+          break;
+          case result.includes("You lose!"):
+          computerScore++;
+        }
+      }
     }
   </script>
 </body>
