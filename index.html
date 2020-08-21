@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Rock Paper Scissors</title>
+  <style>
+    body {
+         text-align: center;
+         background-color: 	#755757;
+         }
+  </style>
 </head>
+
 <body>
+  <h1>Rock Paper Scissors</h1>
+  <h2>Play in the console!</h2>
   <script>
     let playerScore = 0;
     let computerScore = 0;
@@ -14,102 +24,107 @@
     // Randomly picks "rock, paper, or scissors" for the computer
     function computerPlay() {
       let randomNum = Math.floor(Math.random() * 3);
-        switch (randomNum) {
-          case 0:
+      switch (randomNum) {
+        case 0:
           return 'rock'
           break;
-          case 1:
+        case 1:
           return 'paper'
           break;
-          case 2:
+        case 2:
           return 'scissors'
-        }
+      }
     }
 
     // Takes two parameters and declares winner
     function playRound(playerSelection, computerSelection) {
-        let lower = playerSelection.toLowerCase();
-        let playerUpper = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
-        let compUpper = computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()
-        switch (true) {
-          case lower == 'rock' && computerSelection == 'rock':
+      let lower = playerSelection.toLowerCase();
+      let playerUpper = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
+      let compUpper = computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()
+      switch (true) {
+        case lower == 'rock' && computerSelection == 'rock':
           console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
           playerWins = false;
-          computerWins = false; 
+          computerWins = false;
           break;
-          case lower == 'rock' && computerSelection == 'paper':
+        case lower == 'rock' && computerSelection == 'paper':
           console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
           playerWins = false;
-          computerWins = true; 
+          computerWins = true;
           break;
-          case lower == 'rock' && computerSelection == 'scissors':
+        case lower == 'rock' && computerSelection == 'scissors':
           console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
           playerWins = true;
-          computerWins = false; 
+          computerWins = false;
           break;
           console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
-           playerWins = false;
-          computerWins = false; 
+          playerWins = false;
+          computerWins = false;
           break;
-          case lower == 'paper' && computerSelection == 'rock':
+        case lower == 'paper' && computerSelection == 'rock':
           console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
           playerWins = true;
-          computerWins = false; 
+          computerWins = false;
           break;
-          case lower == 'paper' && computerSelection == 'scissors':
+        case lower == 'paper' && computerSelection == 'scissors':
           console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
           playerWins = false;
-          computerWins = true; 
+          computerWins = true;
           break;
-          case lower == 'scissors' && computerSelection == 'scissors':
+        case lower == 'scissors' && computerSelection == 'scissors':
           console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
           playerWins = false;
-          computerWins = false; 
+          computerWins = false;
           break;
-          case lower == 'scissors' && computerSelection == 'rock':
+        case lower == 'scissors' && computerSelection == 'rock':
           console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
           playerWins = false;
-          computerWins = true; 
+          computerWins = true;
           break;
-          case lower == 'scissors' && computerSelection == 'paper':
+        case lower == 'scissors' && computerSelection == 'paper':
           console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
           playerWins = true;
-          computerWins = false; 
+          computerWins = false;
           break;
-          case lower != 'rock' ||playerSelection != 'paper' || playerSelection != scissors:
+        case lower != 'rock' || lower != 'paper' || lower != 'scissors':
           console.log("Invalid input");
           return 0;
 
-        }
-        return playerWins, computerWins;
+      }
+      return playerWins, computerWins;
     }
 
     // Plays 5 round game that keeps score
     function game() {
-      for(let i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i++) {
         const computerSelection = computerPlay();
         const playerSelection = prompt("Choose, Rock, Paper, or Scissors")
         playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
-          playerScore++
-          break;
+            playerScore++
+            break;
           case computerWins:
-          computerScore++
-          }
+            computerScore++
+        }
       }
       switch (true) {
         case playerScore > computerScore:
-        console.log("You win the game!")
-        break;
+          console.log("*** You win the game! ***")
+          break;
         case playerScore < computerScore:
-        console.log("Computer wins the game")
-        break;
+          console.log("*** Computer wins the game ***")
+          break;
+        case playerScore == computerScore && playerScore != 0 && computerScore != 0:
+          console.log("*** It's a draw ***")
+          break;
         default:
-        console.log("It's a draw")
+          console.log("Whoops, that's not right...")
       }
     }
 
+    game();
   </script>
 </body>
+
 </html>
