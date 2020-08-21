@@ -28,7 +28,6 @@
 
     // Takes two parameters and declares winner
     function playRound(playerSelection, computerSelection) {
-        let lower = playerSelection.toLowerCase();
         let result;
         switch (true) {
           case playerSelection == 'rock' && computerSelection == 'rock':
@@ -87,8 +86,8 @@
     // Plays 5 round game that keeps score
     function game() {
       for(let i = 0; i < 5; i++) {
-        const playerSelection = 'rock';
         const computerSelection = computerPlay();
+        const playerSelection = prompt("Choose, Rock, Paper, or Scissors")
         playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
