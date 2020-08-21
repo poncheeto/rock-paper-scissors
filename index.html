@@ -57,6 +57,7 @@
           playerWins = true;
           computerWins = false;
           break;
+          case lower == 'paper' && computerSelection == 'paper':
           console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
           playerWins = false;
           computerWins = false;
@@ -89,7 +90,6 @@
         case lower != 'rock' || lower != 'paper' || lower != 'scissors':
           console.log("Invalid input");
           return 0;
-
       }
       return playerWins, computerWins;
     }
@@ -111,12 +111,15 @@
       switch (true) {
         case playerScore > computerScore:
           console.log("*** You win the game! ***")
+          console.log("*** Refresh the page to play again ***")
           break;
         case playerScore < computerScore:
           console.log("*** Computer wins the game ***")
+          console.log("*** Refresh the page to play again ***")
           break;
         case playerScore == computerScore && playerScore != 0 && computerScore != 0:
           console.log("*** It's a draw ***")
+          console.log("*** Refresh the page to play again ***")
           break;
         default:
           console.log("Whoops, that's not right...")
