@@ -6,6 +6,8 @@
 </head>
 <body>
   <script>
+    let playerScore = 0;
+    let computerScore = 0;
     let playerWins = true;
     let computerWins = true;
 
@@ -26,6 +28,7 @@
 
     // Takes two parameters and declares winner
     function playRound(playerSelection, computerSelection) {
+        let lower = playerSelection.toLowerCase();
         let result;
         switch (true) {
           case playerSelection == 'rock' && computerSelection == 'rock':
@@ -81,34 +84,31 @@
     //console.log(playRound(playerSelection, computerSelection))
     
 
-    // Plays 5 round game that keeps score and reports a winner
+    // Plays 5 round game that keeps score
     function game() {
-      let playerScore = 0;
-      let computerScore = 0;
-      const playerSelection = 'rock'
-      const computerSelection = computerPlay()
-      let result;
-      playerWins;
-      computerWins;
-      
       for(let i = 0; i < 5; i++) {
+        const playerSelection = 'rock'
+        const computerSelection = computerPlay()
         playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
-          playerScore++
-          switch(true) {
-            case playerScore == 3 && computerScore < 3:
-            return 'You win!'
-            break;
-          }  
+          playerScore++ 
           case computerWins:
-          computerScore++;
-          switch(true) {
-            case computerScore == 3 && playerScore < 3:
-            return 'Computer wins'
-            break;
-          }
+          computerScore++
         }
+      }
+    }
+
+    // Function that determines and declares the winner
+    function winner(playerScore, computerScore) {
+      switch (true) {
+        case playerScore > computerScore:
+        console.log("You win the game!")
+        case playerScore < computerScore:
+        console.log("The computer wins")
+        default:
+        console.log("It's a draw")
+
       }
     }
   </script>
