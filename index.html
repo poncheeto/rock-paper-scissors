@@ -8,8 +8,8 @@
   <script>
     let playerScore = 0;
     let computerScore = 0;
-    let playerWins = true;
-    let computerWins = true;
+    let playerWins = false;
+    let computerWins = false;
 
     // Randomly picks "rock, paper, or scissors" for the computer
     function computerPlay() {
@@ -76,7 +76,7 @@
           playerWins = true;
           computerWins = false; 
         }
-        return result;
+        return result, playerWins, computerWins;
     }
     
     //const playerSelection = 'rock'
@@ -87,30 +87,29 @@
     // Plays 5 round game that keeps score
     function game() {
       for(let i = 0; i < 5; i++) {
-        const playerSelection = 'rock'
-        const computerSelection = computerPlay()
+        const playerSelection = 'rock';
+        const computerSelection = computerPlay();
         playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
-          playerScore++ 
+          playerScore++
+          break;
           case computerWins:
           computerScore++
-        }
+          }
       }
-    }
-
-    // Function that determines and declares the winner
-    function winner(playerScore, computerScore) {
       switch (true) {
         case playerScore > computerScore:
         console.log("You win the game!")
+        break;
         case playerScore < computerScore:
-        console.log("The computer wins")
+        console.log("Computer wins")
+        break;
         default:
         console.log("It's a draw")
-
       }
     }
+
   </script>
 </body>
 </html>
