@@ -28,53 +28,61 @@
 
     // Takes two parameters and declares winner
     function playRound(playerSelection, computerSelection) {
-        let result;
+        let lower = playerSelection.toLowerCase();
+        let playerUpper = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
+        let compUpper = computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()
         switch (true) {
-          case playerSelection == 'rock' && computerSelection == 'rock':
+          case lower == 'rock' && computerSelection == 'rock':
+          console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
           playerWins = false;
           computerWins = false; 
           break;
-          case playerSelection == 'rock' && computerSelection == 'paper':
-          playerWins = false;
-          computerWins = true; 
-          break;
-          case playerSelection == 'rock' && computerSelection == 'scissors':
-          playerWins = true;
-          computerWins = false; 
-          break;
-          case playerSelection == 'paper' && computerSelection == 'paper':
-          result = "It's a tie!";
-          playerWins = false;
-          computerWins = false; 
-          break;
-          case playerSelection == 'paper' && computerSelection == 'rock':
-          result = "You win! Paper beats Rock";
-          playerWins = true;
-          computerWins = false; 
-          break;
-          case playerSelection == 'paper' && computerSelection == 'scissors':
+          case lower == 'rock' && computerSelection == 'paper':
+          console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
           playerWins = false;
           computerWins = true; 
           break;
-          case playerSelection == 'scissors' && computerSelection == 'scissors':
-          playerWins = false;
+          case lower == 'rock' && computerSelection == 'scissors':
+          console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
+          playerWins = true;
           computerWins = false; 
           break;
-          case playerSelection == 'scissors' && computerSelection == 'rock':
+          console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
+           playerWins = false;
+          computerWins = false; 
+          break;
+          case lower == 'paper' && computerSelection == 'rock':
+          console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
+          playerWins = true;
+          computerWins = false; 
+          break;
+          case lower == 'paper' && computerSelection == 'scissors':
+          console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
           playerWins = false;
           computerWins = true; 
           break;
-          case playerSelection == 'scissors' && computerSelection == 'paper':
+          case lower == 'scissors' && computerSelection == 'scissors':
+          console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
+          playerWins = false;
+          computerWins = false; 
+          break;
+          case lower == 'scissors' && computerSelection == 'rock':
+          console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
+          playerWins = false;
+          computerWins = true; 
+          break;
+          case lower == 'scissors' && computerSelection == 'paper':
+          console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
           playerWins = true;
           computerWins = false; 
+          break;
+          case lower != 'rock' ||playerSelection != 'paper' || playerSelection != scissors:
+          console.log("Invalid input");
+          return 0;
+
         }
         return playerWins, computerWins;
     }
-    
-    //const playerSelection = 'rock'
-    //const computerSelection = computerPlay()
-    //console.log(playRound(playerSelection, computerSelection))
-    
 
     // Plays 5 round game that keeps score
     function game() {
@@ -84,14 +92,10 @@
         playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
-          console.log("You win! " + `${playerSelection}` + " beats " + `${computerSelection}`)
           playerScore++
           break;
           case computerWins:
-          console.log("You lose! " + `${computerSelection}` + " beats " + `${playerSelection}`)
           computerScore++
-          default:
-          console.log("It's a tie!")
           }
       }
       switch (true) {
@@ -99,7 +103,7 @@
         console.log("You win the game!")
         break;
         case playerScore < computerScore:
-        console.log("Computer wins")
+        console.log("Computer wins the game")
         break;
         default:
         console.log("It's a draw")
