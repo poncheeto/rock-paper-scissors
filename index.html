@@ -29,45 +29,47 @@
         let result;
         switch (true) {
           case playerSelection == 'rock' && computerSelection == 'rock':
-          result = "It's a tie!"
+          result = "It's a tie!";
           playerWins = false;
           computerWins = false; 
           break;
           case playerSelection == 'rock' && computerSelection == 'paper':
-          result = "You lose! Paper beats Rock"
+          result = "You lose! Paper beats Rock";
           playerWins = false;
           computerWins = true; 
           break;
           case playerSelection == 'rock' && computerSelection == 'scissors':
-          result = "You win! Rock beats Scissors"
+          result = "You win! Rock beats Scissors";
           playerWins = true;
           computerWins = false; 
+          break;
           case playerSelection == 'paper' && computerSelection == 'paper':
-          result = "It's a tie!"
+          result = "It's a tie!";
           playerWins = false;
           computerWins = false; 
           break;
           case playerSelection == 'paper' && computerSelection == 'rock':
-          result = "You win! Paper beats Rock"
+          result = "You win! Paper beats Rock";
           playerWins = true;
           computerWins = false; 
           break;
           case playerSelection == 'paper' && computerSelection == 'scissors':
-          result = "You lose! Scissors beats Paper"
+          result = "You lose! Scissors beats Paper";
           playerWins = false;
           computerWins = true; 
+          break;
           case playerSelection == 'scissors' && computerSelection == 'scissors':
-          result = "It's a tie!"
+          result = "It's a tie!";
           playerWins = false;
           computerWins = false; 
           break;
           case playerSelection == 'scissors' && computerSelection == 'rock':
-          result = "You lose! Rock beats Scissors"
+          result = "You lose! Rock beats Scissors";
           playerWins = false;
           computerWins = true; 
           break;
           case playerSelection == 'scissors' && computerSelection == 'paper':
-          result = "You win! Scissors beats Paper"
+          result = "You win! Scissors beats Paper";
           playerWins = true;
           computerWins = false; 
         }
@@ -83,10 +85,14 @@
     function game() {
       let playerScore = 0;
       let computerScore = 0;
+      const playerSelection = 'rock'
+      const computerSelection = computerPlay()
+      let result;
       playerWins;
       computerWins;
       
       for(let i = 0; i < 5; i++) {
+        playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
           playerScore++
@@ -100,15 +106,11 @@
           switch(true) {
             case computerScore == 3 && playerScore < 3:
             return 'Computer wins'
+            break;
           }
         }
       }
-
     }
-
-    const playerSelection = 'rock'
-    const computerSelection = computerPlay()
-    console.log(game())
   </script>
 </body>
 </html>
