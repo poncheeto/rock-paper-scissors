@@ -31,17 +31,14 @@
         let result;
         switch (true) {
           case playerSelection == 'rock' && computerSelection == 'rock':
-          result = "It's a tie!";
           playerWins = false;
           computerWins = false; 
           break;
           case playerSelection == 'rock' && computerSelection == 'paper':
-          result = "You lose! Paper beats Rock";
           playerWins = false;
           computerWins = true; 
           break;
           case playerSelection == 'rock' && computerSelection == 'scissors':
-          result = "You win! Rock beats Scissors";
           playerWins = true;
           computerWins = false; 
           break;
@@ -56,26 +53,22 @@
           computerWins = false; 
           break;
           case playerSelection == 'paper' && computerSelection == 'scissors':
-          result = "You lose! Scissors beats Paper";
           playerWins = false;
           computerWins = true; 
           break;
           case playerSelection == 'scissors' && computerSelection == 'scissors':
-          result = "It's a tie!";
           playerWins = false;
           computerWins = false; 
           break;
           case playerSelection == 'scissors' && computerSelection == 'rock':
-          result = "You lose! Rock beats Scissors";
           playerWins = false;
           computerWins = true; 
           break;
           case playerSelection == 'scissors' && computerSelection == 'paper':
-          result = "You win! Scissors beats Paper";
           playerWins = true;
           computerWins = false; 
         }
-        return result, playerWins, computerWins;
+        return playerWins, computerWins;
     }
     
     //const playerSelection = 'rock'
@@ -91,10 +84,14 @@
         playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
+          console.log("You win! " + `${playerSelection}` + " beats " + `${computerSelection}`)
           playerScore++
           break;
           case computerWins:
+          console.log("You lose! " + `${computerSelection}` + " beats " + `${playerSelection}`)
           computerScore++
+          default:
+          console.log("It's a tie!")
           }
       }
       switch (true) {
