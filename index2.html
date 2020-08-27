@@ -94,9 +94,8 @@
       return playerWins, computerWins;
     }
 
-    // Plays 5 round game that keeps score
+    // Plays 1 round game that keeps score
     function game() {
-      for (let i = 0; i < 5; i++) {
         const computerSelection = computerPlay();
         const playerSelection = prompt("Choose, Rock, Paper, or Scissors")
         playRound(playerSelection, computerSelection);
@@ -107,7 +106,7 @@
           case computerWins:
             computerScore++
         }
-      }
+
       switch (true) {
         case playerScore > computerScore:
           console.log("*** You win the game! ***")
