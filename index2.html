@@ -52,6 +52,7 @@
       let lower = playerSelection.toLowerCase();
       let playerUpper = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
       let compUpper = computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()
+
       switch (true) {
         case lower == 'rock' && computerSelection == 'rock':
           console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
@@ -105,10 +106,19 @@
       return playerWins, computerWins;
     }
 
+    // Calls playRound function when buttons are pressed
+    const button = document.querySelectorAll('button');
+     button.forEach((button) => {
+       button.addEventListener('click', (e) => {
+         playRound;
+         console.log(e);
+       });
+     });
+
     // Plays 1 round game that keeps score
     function game() {
         const computerSelection = computerPlay();
-        const playerSelection = prompt("Choose, Rock, Paper, or Scissors")
+        //const playerSelection = prompt("Choose, Rock, Paper, or Scissors")
         playRound(playerSelection, computerSelection);
         switch (true) {
           case playerWins:
