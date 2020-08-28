@@ -57,54 +57,58 @@
 
       switch (true) {
         case lower == 'rock' && computerSelection == 'rock':
-          console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
+          result = `It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`;
           playerWins = false;
           computerWins = false;
           break;
         case lower == 'rock' && computerSelection == 'paper':
-          console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
+          result = `You lose the round! ${compUpper} beats ${playerUpper}`;
           playerWins = false;
           computerWins = true;
           break;
         case lower == 'rock' && computerSelection == 'scissors':
-          console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
+          result = `You win the round! ${playerUpper} beats ${compUpper}`;
           playerWins = true;
           computerWins = false;
           break;
           case lower == 'paper' && computerSelection == 'paper':
-          console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
+          result = `It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`;
           playerWins = false;
           computerWins = false;
           break;
         case lower == 'paper' && computerSelection == 'rock':
-          console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
+          result = `You win the round! ${playerUpper} beats ${compUpper}`;
           playerWins = true;
           computerWins = false;
           break;
         case lower == 'paper' && computerSelection == 'scissors':
-          console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
+          result = `You lose the round! ${compUpper} beats ${playerUpper}`;
           playerWins = false;
           computerWins = true;
           break;
         case lower == 'scissors' && computerSelection == 'scissors':
-          console.log(`It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`)
+          result = `It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`;
           playerWins = false;
           computerWins = false;
           break;
         case lower == 'scissors' && computerSelection == 'rock':
-          console.log(`You lose the round! ${compUpper} beats ${playerUpper}`)
+          result = `You lose the round! ${compUpper} beats ${playerUpper}`;
           playerWins = false;
           computerWins = true;
           break;
         case lower == 'scissors' && computerSelection == 'paper':
-          console.log(`You win the round! ${playerUpper} beats ${compUpper}`)
+          result = `You win the round! ${playerUpper} beats ${compUpper}`;
           playerWins = true;
           computerWins = false;
           break;
         case lower != 'rock' || lower != 'paper' || lower != 'scissors':
-          console.log("Invalid input");
+          result = ("Invalid input");
           return 0;
       }
+      const results = document.querySelector('#container');
+      const div = document.createElement('div');
+      div.textContent = result;
+      results.appendChild(div);
       return playerWins, computerWins;
     }
 
@@ -112,9 +116,6 @@
     const buttons = document.querySelectorAll('button');
      buttons.forEach((button) => {
        button.addEventListener('click', playRound)
-       const div = document.createElement('div');
-       
-
 
      });
 
