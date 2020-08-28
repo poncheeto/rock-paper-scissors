@@ -48,10 +48,12 @@
     }
 
     // Takes two parameters and declares winner
-    function playRound(playerSelection, computerSelection) {
+    function playRound(event) {
+      const playerSelection = event.target.id;
+      const computerSelection = computerPlay();
       let lower = playerSelection.toLowerCase();
       let playerUpper = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
-      let compUpper = computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase()
+      let compUpper = computerSelection[0].toUpperCase() + computerSelection.slice(1).toLowerCase();
 
       switch (true) {
         case lower == 'rock' && computerSelection == 'rock':
@@ -107,19 +109,18 @@
     }
 
     // Calls playRound function when buttons are pressed
-    const button = document.querySelectorAll('button');
-     button.forEach((button) => {
-       button.addEventListener('click', (e) => {
-         playRound;
-         console.log(e);
-       });
+    const buttons = document.querySelectorAll('button');
+     buttons.forEach((button) => {
+       button.addEventListener('click', playRound)
+       const div = document.createElement('div');
+       
+
+
      });
 
     // Plays 1 round game that keeps score
     function game() {
-        const computerSelection = computerPlay();
-        //const playerSelection = prompt("Choose, Rock, Paper, or Scissors")
-        playRound(playerSelection, computerSelection);
+        playRound();
         switch (true) {
           case playerWins:
             playerScore++
