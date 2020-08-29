@@ -6,22 +6,21 @@
   <title>Rock Paper Scissors</title>
   <style>
     body {
-         text-align: center;
-         background-color: 	#755757;
-         }
+      text-align: center;
+      background-color: #755757;
+    }
   </style>
 </head>
 
 <body>
 
   <h1>Rock Paper Scissors</h1>
-  <h2>Play in the console!</h2>
   <main>
     <!-- Buttons for user interface -->
-    <div id ="container">
-        <button id="Rock">Rock</button>
-        <button id="Paper">Paper</button>
-        <button id="Scissors">Scissors</button>
+    <div id="container">
+      <button id="Rock">Rock</button>
+      <button id="Paper">Paper</button>
+      <button id="Scissors">Scissors</button>
     </div>
 
   </main>
@@ -48,8 +47,8 @@
     }
 
     // Takes two parameters and declares winner
-    function playRound(event) {
-      const playerSelection = event.target.id;
+    function playRound(e) {
+      const playerSelection = e.target.id;
       const computerSelection = computerPlay();
       let lower = playerSelection.toLowerCase();
       let playerUpper = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
@@ -71,7 +70,7 @@
           playerWins = true;
           computerWins = false;
           break;
-          case lower == 'paper' && computerSelection == 'paper':
+        case lower == 'paper' && computerSelection == 'paper':
           result = `It's a tie! \nYou: ${playerUpper} | Computer: ${compUpper}`;
           playerWins = false;
           computerWins = false;
@@ -105,23 +104,28 @@
           result = ("Invalid input");
           return 0;
       }
-      const results = document.querySelector('#container');
+
+      // Show results of each round
+      const roundResults = document.querySelector('#container');
       const div = document.createElement('div');
       div.textContent = result;
-      results.appendChild(div);
+      roundResults.appendChild(div);
+
       return playerWins, computerWins;
+
     }
 
     // Calls playRound function when buttons are pressed
     const buttons = document.querySelectorAll('button');
-     buttons.forEach((button) => {
-       button.addEventListener('click', playRound)
+    buttons.forEach((button) => {
+      button.addEventListener('click', playRound);
+      button.addEventListener('click', game);
+    });
 
-     });
-
-    // Plays 1 round game that keeps score
-    function game() {
-        playRound();
+    
+    // Plays 5 round game that keeps score
+    function game(e) {
+      for (let i = 0; i < 5; i++) {
         switch (true) {
           case playerWins:
             playerScore++
@@ -129,26 +133,32 @@
           case computerWins:
             computerScore++
         }
+      }
 
       switch (true) {
         case playerScore > computerScore:
-          console.log("*** You win the game! ***")
-          console.log("*** Refresh the page to play again ***")
+          result = ("*** You win the game! ***");
+          //result = ("*** Refresh the page to play again ***");
           break;
         case playerScore < computerScore:
-          console.log("*** Computer wins the game ***")
-          console.log("*** Refresh the page to play again ***")
+          result = ("*** Computer wins the game ***");
+          //result = ("*** Refresh the page to play again ***");
           break;
-        case playerScore == computerScore && playerScore != 0 && computerScore != 0:
-          console.log("*** It's a draw ***")
-          console.log("*** Refresh the page to play again ***")
-          break;
-        default:
-          console.log("Whoops, that's not right...")
+        case playerScore == computerScore && (playerScore != 0 && computerScore != 0):
+          result = ("*** It's a draw ***");
+        //console.log("*** Refresh the page to play again ***");
+        //default:
+        //console.log("Whoops, that's not right...")
       }
+      const gameResults = document.querySelector('#container');
+      //const div = document.createElement('div');
+      const heading = document.createElement('h1');
+      //div.appendChild(heading);
+      heading.textContent = result;
+      gameResults.appendChild(heading);
     }
 
-    game();
+    game(e);
   </script>
 </body>
 
