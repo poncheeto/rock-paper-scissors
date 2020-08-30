@@ -9,6 +9,9 @@
       text-align: center;
       background-color: #755757;
     }
+    div {
+      margin-top: 30px;
+    }
   </style>
 </head>
 
@@ -44,6 +47,11 @@
             return 'scissors'
         }
       }
+
+      const gameInfo = document.querySelector('#container');
+        const div = document.createElement('div');
+        const pScore = document.createElement('h2');
+        const cScore = document.createElement('h2');
 
       // Takes two parameters and declares winner
       function playRound(e) {
@@ -111,10 +119,6 @@
         }
 
         // Show results of each round
-        const gameInfo = document.querySelector('#container');
-        const div = document.createElement('div');
-        const pScore = document.createElement('h2');
-        const cScore = document.createElement('h2');
         div.textContent = result;
         pScore.textContent = `Player: ${playerScore}`;
         cScore.textContent = `Computer: ${computerScore}`;
